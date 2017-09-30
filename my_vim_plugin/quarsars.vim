@@ -38,10 +38,6 @@ func! GenTagFileC()
     exec 'set tags+=' . s:this_file_tag
 endfunc
 
-func! TestFuncRef(Str)
-    echo a:Str
-endfunc
-
 map <F3> :call GetSymbolsFromTagFileC()<CR>
 func! GetSymbolsFromTagFileC()
     " use an external bash script to parse the tag file.
@@ -75,3 +71,27 @@ func! GetSymbolsFromTagFileC()
 endfunc
 
 
+func! NewFunc(name, opts)
+    let context = {'name': a:name, 'opts': a:opts}
+   	function! context.f(...)
+    	echo "running : " . self.name . "\n"
+    	echo self.opts
+    	echo "\n"
+	endfunction
+	
+	return context
+endfunc
+
+
+let g:FuncArray = []
+let g:FuncArrayNum = 0
+map <F4> :call TestClosure()<CR>
+func! TestClosure()
+	if  g:FuncArrayNum < 3
+	    let funcobj = NewFunc('foo' . string(g:FuncArrayNum), { 'a' : g:FuncArrayNum } )
+	    call add(g:FuncArray, funcobj)
+        let g:FuncArrayNum = g:FuncArrayNum + 1
+    else 
+        echo 'more than 3!'
+    endif
+endfunc
