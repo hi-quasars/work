@@ -1,0 +1,3 @@
+[submodule "my_vim_plugin/3rdParty/quickmenu.vim"]
+	path = my_vim_plugin/3rdParty/quickmenu.vim
+	url = https://github.com/skywind3000/quickmenu.vim.git
