@@ -53,8 +53,6 @@ func! GetSymbolsFromTagFileC()
     let num = 0
     
 
-
-
     for i in s:symbolstr
         if strpart(i, 0, 1) == '#'
             let s:type = strpart(i, 1, strlen(i) - 1)
