@@ -22,3 +22,4 @@ else
 	pr_info "quarsars.vim already installed." info
 fi
 
+git submodule update --init --recursive

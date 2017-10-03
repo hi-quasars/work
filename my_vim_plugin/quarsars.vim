@@ -17,7 +17,6 @@ let s:f1 = s:qmpath . 'syntax/quickmenu.vim'
 let s:file = expand('%:p')
 let s:this_file_tag = s:file . '.tag'
 
-
 exec 'source ' . s:f0
 exec 'source ' . s:f1
 
@@ -46,7 +45,7 @@ func! GetSymbolsFromTagFileC()
     " s:symbolstr is a list.
     " ready to generate the window which contains those tags from this file.
     
-    call g:quickmenu#reset()
+    call quickmenu#reset()
     
 
     let s:symbols = {}
@@ -56,10 +55,10 @@ func! GetSymbolsFromTagFileC()
     for i in s:symbolstr
         if strpart(i, 0, 1) == '#'
             let s:type = strpart(i, 1, strlen(i) - 1)
-            call g:quickmenu#append('# ' . s:type , '')
+            call quickmenu#append('# ' . s:type , '')
         else
             let s:symbols.num = i
-            call g:quickmenu#append( i ,'echo 123',  s:type . ': ' . i)
+            call quickmenu#append( i ,'echo 123',  s:type . ': ' . i)
             let num = num + 1
         endif
     endfor
@@ -69,6 +68,7 @@ func! GetSymbolsFromTagFileC()
 endfunc
 
 
+" to call the obj :call xxx.f()
 func! NewFunc(name, opts)
     let context = {'name': a:name, 'opts': a:opts}
    	function! context.f(...)
