@@ -1,26 +1,8 @@
 #include <stdio.h>
-
+#define XAS
 #define Max 500
 #define xasd 
 #define j
-#define xdf
-#define Xdf
-#define a1
-#define a2
-#define a4
-#define x1
-#define x2
-
-#define x1
-#define x1
-#define x1
-#define x1
-#define x1
-#define x1
-#define x1
-#define x1
-#define x1
-
 int x[MAX];
 
 int v;
