@@ -1,3 +1,10 @@
 set tabstop=4
 set shiftwidth=4
 set nu
+
+" map select all and copy: ctrl+a
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+map <F12> gg=G
+
+set tags=tags

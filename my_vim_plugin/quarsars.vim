@@ -27,7 +27,7 @@ func! GenTagFileC()
 	exec 'silent !' . 'rm ' . s:this_file_tag . ' 2>/dev/null' | exec ':redraw!'
 
     "now only support C lang
-    exec 'silent !' . 'ctags --language-force=C -f ' . s:this_file_tag . ' ' . s:file | exec ':redraw!'
+    exec 'silent !' . 'ctags --excmd=number --language-force=C -f ' . s:this_file_tag . ' ' . s:file | exec ':redraw!'
 
     "set tags to ref. the file
     exec 'set tags+=' . s:this_file_tag
