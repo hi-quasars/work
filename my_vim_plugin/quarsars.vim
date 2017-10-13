@@ -17,8 +17,8 @@ let s:f1 = s:qmpath . 'syntax/quickmenu.vim'
 let s:file = expand('%:p')
 let s:this_file_tag = s:file . '.tag'
 
-exec 'source ' . s:f0
 exec 'source ' . s:f1
+exec 'source ' . s:f0
 
 " my plugin 's logic
 func! GenTagFileC()
@@ -91,6 +91,26 @@ func! GetSymbolsFromTagFileC()
     call quickmenu#toggle(0)
 	map <F3> :call quickmenu#toggle(0)<CR>
 endfunc
+
+"-------------
+map <F8> :call TestSearchBar()<CR>
+
+let s:originbid = -1
+let s:searchbar_bid = -1
+func! TestSearchBar()
+    let s:originbid = bufnr('%')
+    if s:searchbar_bid < 0
+        exec "silent! bo " . "1" . " new"
+    endif
+    let s:searchbar_bid = bufnr('%')
+    inoremap <CR> 
+    call feedkeys("a")
+    
+endfunc
+
+func! getline_curr
+
+
 
 
 "------------- test code --------------------
