@@ -19,7 +19,6 @@ this repo contains some things useful for work.
    4. ...
   
 ###  install
- * run `git submodule update --init --recursive`
  * run `./my_vim_plugin/install.sh`
   
 ###  usage
