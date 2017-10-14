@@ -103,14 +103,16 @@ func! TestSearchBar()
         exec "silent! bo " . "1" . " new"
     endif
     let s:searchbar_bid = bufnr('%')
-    inoremap <CR> 
+    inoremap <CR> <ESC> <CR>:call Getline_curr()<CR>
     call feedkeys("a")
     
 endfunc
 
-func! getline_curr
-
-
+map <F9> :call Getline_curr()<CR>
+func! Getline_curr()
+	let ctn = getline(".")
+	echo "ctn" . ctn
+endfunc
 
 
 "------------- test code --------------------
