@@ -1,4 +1,4 @@
-" check if loaded already
+"check if loaded already
 if &cp || exists("g:loaded_quarsarsplugin")
     finish
 endif
@@ -32,7 +32,6 @@ func! GenTagFileC()
     "set tags to ref. the file
     exec 'set tags+=' . s:this_file_tag
 endfunc
-
 
 
 map <F3> :call GetSymbolsFromTagFileC()<CR>
@@ -93,27 +92,66 @@ func! GetSymbolsFromTagFileC()
 endfunc
 
 "-------------
-map <F8> :call TestSearchBar()<CR>
 
 let s:originbid = -1
+let s:originln = -1
 let s:searchbar_bid = -1
-func! TestSearchBar()
+let s:searchbar_prefix = "Search >>> "
+let s:searchbar_btn = "<F9>"  " <Enter> 
+
+func! OpenSearchBar()
+	if s:searchbar_bid > 0 && bufexists(s:searchbar_bid)
+		call CloseSearchBar()
+	endif	
     let s:originbid = bufnr('%')
-    if s:searchbar_bid < 0
-        exec "silent! bo " . "1" . " new"
-    endif
-    let s:searchbar_bid = bufnr('%')
-    inoremap <CR> <ESC> <CR>:call Getline_curr()<CR>
+    exec "silent! to " . "1" . " new"
+	setlocal buftype=nofile bufhidden=wipe 
+	setlocal nonumber noswapfile
+	"setlocal colorcolumn= nocursorline nocursorcolumn norelativenumber
+	"setlocal laststatus=0
+	let s:searchbar_bid = bufnr('%')
     call feedkeys("a")
+endfunc
+
+func! CloseSearchBar()
+	if !bufexists(s:searchbar_bid)
+		return 0
+	endif
+	if s:searchbar_bid > 0
+		if bufnr("%") == s:searchbar_bid						" current buffer 
+			silent close!
+			let s:searchbar_bid = -1
+		endif
+		if s:searchbar_bid > 0 && bufexists(s:searchbar_bid)	" not current buffer
+			silent exec 'bwipeout ' . s:searchbar_bid
+			let s:searchbar_bid = -1
+		endif
+	endif
+	redraw
+endfunc
+
+map <F8> :call TestSearchBar()<CR>
+func! TestSearchBar()
+	" echo s:originbid . "," . s:searchbar_bid
+	if s:searchbar_bid > 0 && !bufexists(s:searchbar_bid)
+		let s:searchbar_bid = -1
+	endif
     
+	if s:searchbar_bid > 0
+		call CloseSearchBar()
+	else
+		call OpenSearchBar()
+	endif
+
+	exec ":inoremap <buffer>" . s:searchbar_btn . "<ESC>:call SearchMainJob()<CR>"
 endfunc
 
-map <F9> :call Getline_curr()<CR>
-func! Getline_curr()
+"------------- doSearch ---------------------
+func! SearchMainJob()
 	let ctn = getline(".")
-	echo "ctn" . ctn
+	echo "ctn: " . ctn
+	exec ":iu <buffer>" . s:searchbar_btn
 endfunc
-
 
 "------------- test code --------------------
 " to call the obj :call xxx.f()
