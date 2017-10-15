@@ -97,7 +97,7 @@ let s:originbid = -1
 let s:originln = -1
 let s:searchbar_bid = -1
 let s:searchbar_prefix = "Search >>> "
-let s:searchbar_btn = "<F9>"  " <Enter> 
+let s:searchbar_btn = "<CR>"  " <Enter> 
 
 func! OpenSearchBar()
 	if s:searchbar_bid > 0 && bufexists(s:searchbar_bid)
@@ -143,7 +143,7 @@ func! TestSearchBar()
 		call OpenSearchBar()
 	endif
 
-	exec ":inoremap <buffer>" . s:searchbar_btn . "<ESC>:call SearchMainJob()<CR>"
+	exec ":inoremap <buffer>" . s:searchbar_btn . " <ESC>:call SearchMainJob()<CR>"
 endfunc
 
 "------------- doSearch ---------------------
