@@ -8,3 +8,6 @@ map! <C-A> <Esc>ggVGY
 map <F12> gg=G
 
 set tags=tags
+
+" jump to the place where cursor is opened last time
+autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal `\"" | endif
