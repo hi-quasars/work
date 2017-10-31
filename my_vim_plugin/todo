@@ -9,4 +9,4 @@
 
 5. auto-complete : member_complete or prefix-string_complete
 6. add current line to tag, jump back.
-7. 
+7. BUG - multi window | the ctags file not in current path 
