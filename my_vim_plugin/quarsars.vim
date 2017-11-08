@@ -145,13 +145,28 @@ func! TestSearchBar()
 
 	exec ":inoremap <buffer>" . s:searchbar_btn . " <ESC>:call SearchMainJob()<CR>"
 endfunc
-
 "------------- doSearch ---------------------
 func! SearchMainJob()
 	let ctn = getline(".")
 	echo "ctn: " . ctn
 	exec ":iu <buffer>" . s:searchbar_btn
 endfunc
+
+"------------- Tag ---------------------
+let s:taglinelist = []
+
+"map <C-Q><C-T> :call Tag()<CR>
+func! Tag()
+    let s:taglinelist = s:taglinelist + line(".")
+endfunc
+
+"map <F5> :call Echotags()<CR>
+func! Echotags()
+    :echo s:taglinelist
+endfunc
+
+
+
 
 "------------- test code --------------------
 " to call the obj :call xxx.f()
