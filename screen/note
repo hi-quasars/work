@@ -1,0 +1,3 @@
+To solve `vim's color & show issue`:
+1. `altscreen on` in screenrc
+2. configure screen with `--enable-colors256` and re-compile
