@@ -1,3 +1,6 @@
-[submodule "my_vim_plugin/3rdParty/quickmenu.vim"]
-	path = my_vim_plugin/3rdParty/quickmenu.vim
-	url = https://github.com/skywind3000/quickmenu.vim.git
+[submodule "libquasar"]
+	path = libquasar
+	url = https://github.com/hi-quasars/libquarsar.git
+[submodule "vim/plugins/quasars.vim"]
+	path = vim/plugins/quasars.vim
+	url = https://github.com/hi-quasars/quasars.vim.git
