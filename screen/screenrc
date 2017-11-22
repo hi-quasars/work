@@ -110,8 +110,8 @@ termcapinfo linux C8
 #
 
 #remove some stupid / dangerous key bindings
-bind k
-bind ^k
+#bind k
+#bind ^k
 bind .
 bind ^\
 bind \\
@@ -156,4 +156,13 @@ bind ^] paste [.]
 # my custom settings
 escape ^Jj
 shell -$SHELL
+
+bind 'k' focus down
+bind 'j' focus top
+bind 'h' focus left
+bind 'l' focus right
+
+#source _layouts
+# layout save def
+# layout autosave on
 altscreen on
