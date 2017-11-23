@@ -7,3 +7,5 @@ fi
 
 # User specific aliases and functions
 alias grep='grep --color=auto '
+export PS1='\[\033k:\W\033\\\]'
+export PS1="\n[\u@\h:\w]\n"$PS1'\$ '

@@ -166,3 +166,5 @@ bind 'l' focus right
 # layout save def
 # layout autosave on
 altscreen on
+
+shelltitle "$ |bash"
