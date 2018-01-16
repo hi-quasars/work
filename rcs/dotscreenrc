@@ -6,7 +6,7 @@
 # password ODSJQf.4IJN7E    # "1234"
 
 # no annoying audible bell, please
-vbell on
+vbell off
 
 # detach on hangup
 autodetach on
@@ -19,6 +19,7 @@ pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
 
 # advertise hardstatus support to $TERMCAP
 # termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 
 # make the shell in every window a login shell
 #shell -$SHELL
@@ -144,8 +145,6 @@ bind ^] paste [.]
 # hardstatus alwayslastline "%Lw"
 
 # bind = resize =
-# bind + resize +1
-# bind - resize -1
 # bind _ resize max
 #
 # defnonblock 1
@@ -161,6 +160,9 @@ bind 'k' focus down
 bind 'j' focus top
 bind 'h' focus left
 bind 'l' focus right
+
+bind + resize +1
+bind - resize -1
 
 #source _layouts
 # layout save def
