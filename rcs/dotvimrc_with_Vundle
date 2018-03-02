@@ -1,0 +1,46 @@
+set mouse= "disable mouse
+set nocompatible
+
+" map select all and copy: ctrl+a
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+map <F12> gg=G
+
+" add the tags file in current dir
+set tags=tags
+
+source /home/fatiao/src/github/quasars.vim/quasars.vim
+autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal `\"" | endif
+
+syntax enable
+
+set t_Co=256
+set background=dark
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-scripts/The-NERD-tree'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'flazz/vim-colorschemes'
+call vundle#end()
+filetype plugin indent on
+
+" NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+set encoding=utf-8
+set laststatus=2
+set t_Co=256   
+let g:Powerline_symbols= "fancy"
+set fillchars+=stl:\ ,stlnc:\
+
+source /home/fatiao/src/github/work/rcs/dotvimrc_setcolor
+colorscheme cobalt2
